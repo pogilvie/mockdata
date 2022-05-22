@@ -1,4 +1,6 @@
 
+query:
+	
 
 scratch:
 	sfdx force:org:create \
@@ -31,7 +33,7 @@ contacts:
 	sfdx force:data:bulk:upsert \
 		-s Contact \
 		-i RowId__c \
-		-f ./data/Account.csv \
-		- w 20
+		-f ./data/Contact.csv \
+		-w 20 \
 		-u mockdata
 
