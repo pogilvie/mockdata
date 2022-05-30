@@ -1,6 +1,21 @@
 
 query:
-	
+	sfdx pogilvie:query:soql -f ./scripts/soql/Account.soql -u mockdata 
+
+query = "\
+SELECT \
+    Id, \
+    Name, \
+    Owner.Profile.Name, \
+    (SELECT Id, Name, Owner.Profile.Name FROM Contacts) \
+FROM Account \
+ORDER BY Name \
+LIMIT 10"
+
+query-inline:
+	sfdx force:data:soql:query \
+		-q $(query) \
+		-u mockdata
 
 scratch:
 	sfdx force:org:create \
